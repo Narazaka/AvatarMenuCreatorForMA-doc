@@ -313,19 +313,19 @@ Radialメニューが完成！
 
 # +αツール編1: メニューを階層化したい
 
-親メニューオブジェクトにMA Menu InstallerとMA Menu Itemを付けて、以下のように設定します。
+親メニューオブジェクトのInspector上の「Add Component」から`MA Menu Installer`と`MA Menu Item`を付けて、以下のように設定します。
 
 ![](imgs/menu-parent-inspector.png)
 
 # +αツール編1: メニューを階層化したい
 
-作ったメニューを親メニューオブジェクトの子階層にもってきます
+親メニューオブジェクトの子階層にAvatarMenuCreatorで作ったメニューをもってきます
 
 ![](imgs/menu-child.png)
 
 # +αツール編1: メニューを階層化したい
 
-メニューオブジェクトに付いているMA Menu Installerを削除します。
+AvatarMenuCreatorでメニューオブジェクトに付いている`MA Menu Installer`を削除します。
 
 （削除して良いというヘルプと削除ボタンが出ているので押して下さい）
 
@@ -341,35 +341,37 @@ Radialメニューが完成！
 
 # +αツール編2: 服同士の干渉を防止したい
 
-- リボンは同時に使わない！
-- 別の衣装は同時に出さない！
-- 衣装のある部分を消すと衣装の別の部分が成立しない！
+- 服装ON/OFFメニューの悩み
+  - リボンは2つ同時に使わない！
+  - 別の衣装は同時に出さない！
+  - 衣装のある部分を消すと衣装の別の部分が成立しない！
 
 ![](imgs/clothes1.png)　![](imgs/clothes2.png)　![](imgs/clothes3.png)
 
 # +αツール編2: 服同士の干渉を防止したい
 
 **AvatarParametersDriver**
-
-Expression Parameterを操作する`VRC Avatar Parameter Driver`を簡単に設定出来ます
-
+Expression Parameterを操作する`VRC Avatar Parameter Driver`を簡単に設定出来るツール
 https://narazaka.booth.pm/items/5465303
 
 ![](imgs/AvatarParametersDriver_s.png)
 
 # +αツール編2: 服同士の干渉を防止したい
 
-**AvatarParametersExclusiveGroup**
+`VRC Avatar Parameter Driver`……？
+![](imgs/animator.png) ![](imgs/vrc_avatar_parameter_driver.png)
 
-特にオブジェクト1つごとが干渉する場合に特化したツールです。
-
-https://github.com/Narazaka/AvatarParametersExclusiveGroup
+これをAnimatorいじらずにコンポーネント上の設定だけで作ってくれるやつです。
 
 # +αツール編2: 服同士の干渉を防止したい
 
-ようはこれをAnimatorいじらずにコンポーネント設定だけでつくるやつです。
+さらに……
 
-![](imgs/animator.png) ![](imgs/vrc_avatar_parameter_driver.png)
+**AvatarParametersExclusiveGroup**
+
+特にオブジェクト1つずつ排他制御したい場合に設定が簡単にできるツールです。
+
+https://github.com/Narazaka/AvatarParametersExclusiveGroup
 
 # +αツール編2: 服同士の干渉を防止したい
 
@@ -381,6 +383,7 @@ https://github.com/Narazaka/AvatarParametersExclusiveGroup
 
 たとえばこんなケース
 
+0. セーラー服・水着・普段着・上着 がある
 1. セーラー服と水着と普段着を同時に出さない
 2. セーラー服と上着が干渉するのでセーラー服有効なら上着を切る
 3. 普段着にした時は上着をデフォルトON
@@ -400,7 +403,7 @@ https://github.com/Narazaka/AvatarParametersExclusiveGroup
 https://github.com/Narazaka/AvatarParametersSaver
 
 - 複数パラメーターをまとめて動かすプリセットを作れる
-- Playしてパラメーターを設定出来る
+- Play中に実際にパラメーターを動かして設定出来る
 - インストールは同じくVCCから
 
 # +αツール編3: 複数の切り換えをまとめたプリセット
@@ -423,13 +426,13 @@ https://github.com/Narazaka/AvatarParametersSaver
 
 ![](imgs/aps-tools.png)
 
-ウインドウに「Playしてください」と言われるのでシーンを再生すると……
+出てきたウインドウに「Playしてください」と言われるのでシーンを再生すると……
 
 ![](imgs/aps-window.png)
 
 # +αツール編3: 複数の切り換えをまとめたプリセット
 
-実際にメニューを操作した状態を確認しながら設定出来ます
+実際にメニューを操作し状態を確認しながら設定出来ます
 
 ![](imgs/aps-play.png)
 
@@ -468,8 +471,8 @@ https://github.com/Narazaka/AvatarParametersSaver
 
 # 応用ケース2: ON/OFFフェードと無段階変更の干渉対策
 
-- 無段階変更メニューでデフォルトパラメーター付近に無効領域を設定
-- 無段階変更メニューをON/OFFメニューより下側に入れる（無段階変更メニューを優先）
+- 無段階変更メニューでデフォルトパラメーター付近に「無効領域」を設定
+- 無段階変更メニューオブジェクトをON/OFFメニューオブジェクトより下側に入れる（下側のメニュー＝無段階変更メニューが優先されます）
 
 ![](imgs/amc-fade-conflict.png)　![](imgs/amc-fade-conflict-order.png)
 
@@ -499,6 +502,7 @@ Prefab内のMA ParametersかMerge Animatorのメニューから「AvatarMenuCrea
 - アニメーション生成ツールとしても使えます
 - Quest対応でメニュー残す場合はprefab variantで内容変更とかで使えると思います
 - 生成したprefabからコンポーネント内容を復元できます
+  - 1.6.2以前で作ったprefabでも1.7.0以降でメニューを再編集可能に
 
 # もういちどおさらい: 基本ケースまとめ！
 
@@ -517,6 +521,8 @@ Prefab内のMA ParametersかMerge Animatorのメニューから「AvatarMenuCrea
 <span style="font-size: 160%; font-weight: bold">
 メニューの階層化はModular Avatarの基本コンポーネントで出来ます！
 </span>
+
+![](imgs/menu-parent-inspector.png)
 
 # 以上
 
