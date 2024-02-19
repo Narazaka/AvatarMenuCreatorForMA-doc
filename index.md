@@ -66,6 +66,7 @@ https://narazaka.booth.pm/items/4419509
 
 - 操作
   - GameObjectのON/OFF
+  - マテリアルの変更
   - Blendshapeの値
   - シェーダーパラメーターの値
 - 個別ON/OFF（Bool）
