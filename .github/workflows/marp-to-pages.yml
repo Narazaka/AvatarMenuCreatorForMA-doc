@@ -12,31 +12,31 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
 
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20"
+
+      - name: Install Marp CLI
+        run: npm install -g @marp-team/marp-cli
+
       - name: Ensure build dir exists
-        run: mkdir -p build
+        run: mkdir build
 
       - name: Copy images directory (if exists)
         run: cp -R imgs build/imgs
 
       - name: Marp Build (README)
-        uses: docker://marpteam/marp-cli:v3.4.0
-        with:
-          args: index.md --html -o build/index.html
-        env:
-          MARP_USER: root:root
+        run: marp index.md --html -o build/index.html
 
       - name: Marp Build (index.pdf)
-        uses: docker://marpteam/marp-cli:v3.4.0
-        with:
-          args: index.md --html --allow-local-files -o build/index.pdf
-        env:
-          MARP_USER: root:root
+        run: marp index.md --html --allow-local-files -o build/index.pdf
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
