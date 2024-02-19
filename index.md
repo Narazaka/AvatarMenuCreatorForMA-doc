@@ -506,6 +506,8 @@ Prefab内のMA ParametersかMerge Animatorのメニューから「AvatarMenuCrea
 
 # もういちどおさらい: 基本ケースまとめ！
 
+# もういちどおさらい: 基本ケースまとめ！
+
 ①ヒエラルキー上のアバターをツールにセット！
 
 ![](imgs/amc-avatar.png)
