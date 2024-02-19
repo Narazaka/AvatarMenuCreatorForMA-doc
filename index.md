@@ -4,7 +4,12 @@ theme: default
 headingDivider: 1
 paginate: true
 ---
-
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+section {
+  font-family: Segoe UI,Meiryo,Noto Sans JP,Apple Color Emoji,Segoe UI Emoji,sans-serif !important;
+}
+</style>
 # Modular Avatarで着せ替えメニューを作ろう！
 
 Avatar Menu Creator for MA +α の解説
@@ -476,7 +481,7 @@ PCとQuestでパラメーターのビット位置を同じにするためにメ�
 
 # 応用ケース5: 旧バージョンのprefabから現バージョンのコンポーネントに復元
 
-Prefab内のMA ParametersかMA Merge Animatorのメニューから「AvatarMenuCreator for MA」→「アセット内容から設定を復元」でコンポーネントに出来ます。
+Prefab内のMA ParametersかMerge Animatorのメニューから「AvatarMenuCreator for MA」→「アセット内容から設定を復元」でコンポーネントに出来ます。
 
 ![](imgs/amc-restore.png)
 
